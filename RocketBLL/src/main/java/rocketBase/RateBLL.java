@@ -11,7 +11,7 @@ public class RateBLL {
 
 	private static RateDAL _RateDAL = new RateDAL();
 	
-	static double getRate(int GivenCreditScore) throws RateException 
+	public static double getRate(int GivenCreditScore) throws RateException 
 	{
 		//TODO - RocketBLL RateBLL.getRate - make sure you throw any exception
 		
@@ -29,7 +29,10 @@ public class RateBLL {
 				intRate = rates.get(i).getdInterestRate();
 			}
 		}
-		return intRate;
+		if(intRate < 0)
+			throw new RateException(GivenCreditScore);
+		else
+			return intRate;
 	}
 	
 	
