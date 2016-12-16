@@ -2,6 +2,7 @@ package rocket.app.view;
 
 import eNums.eAction;
 import exceptions.RateException;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +38,9 @@ public class MortgageController {
 	@FXML
 	private TextField txtHouseCost;
 	@FXML
-	private ComboBox loanTerm;
+	private TextField txtDownPayment;
+	@FXML
+	private ComboBox loanTerm = new ComboBox(FXCollections.observableArrayList(15,30));
 	@FXML
 	private Button btn;
 	@FXML
@@ -50,6 +53,8 @@ public class MortgageController {
 	private Label lblCreditScore;
 	@FXML
 	private Label lblHouseCost;
+	@FXML
+	private Label lblDownPayment;
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
@@ -72,6 +77,7 @@ public class MortgageController {
 		lq.setIncome(Double.parseDouble(txtIncome.getText()));
 		lq.setExpenses(Double.parseDouble(txtExpenses.getText()));
 		lq.setiCreditScore(Integer.parseInt(txtCreditScore.getText()));
+		lq.setiDownPayment(Integer.parseInt(txtDownPayment.getText()));
 		try
 		{
 			lq.setdRate(RateBLL.getRate(Integer.parseInt(txtCreditScore.getText())));
@@ -80,6 +86,8 @@ public class MortgageController {
 		{
 			e.printStackTrace();
 		}
+		lq.setiTerm((int)loanTerm.getSelectionModel().getSelectedItem());
+		lq.setdAmount(Double.parseDouble(txtHouseCost.getText()));
 		a.setLoanRequest(lq);
 		
 		//	send lq as a message to RocketHub		
