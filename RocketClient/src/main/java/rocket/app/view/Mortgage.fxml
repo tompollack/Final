@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rocket.app.view.MortgageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rocket.app.view.MortgageController">
    <children>
       <Label fx:id="lblIncome" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="47.0" text="Income">
          <font>
@@ -41,5 +40,11 @@
          </font>
       </Label>
       <Button fx:id="btn" layoutX="225.0" layoutY="117.0" mnemonicParsing="false" onAction="#btnCalculatePayment" text="Button" />
+      <Label fx:id="lblDownPayment" layoutX="14.0" layoutY="296.0" text="Down Payment">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDownPayment" layoutX="14.0" layoutY="315.0" />
    </children>
 </AnchorPane>
