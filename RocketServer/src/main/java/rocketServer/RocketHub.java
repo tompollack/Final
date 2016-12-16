@@ -40,7 +40,7 @@ public class RocketHub extends Hub {
 					double rate = RateBLL.getRate(lq.getiCreditScore());;
 					if(rate>0)
 					{
-						lq.setdPayment(RateBLL.getPayment(rate, lq.getiTerm(), lq.getdAmount(), f, false));
+						lq.setdPayment(RateBLL.getPayment(rate, lq.getiTerm(), lq.getdAmount(), 0, false));
 					}
 					sendToAll(lq);
 				}
