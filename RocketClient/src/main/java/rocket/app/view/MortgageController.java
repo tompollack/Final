@@ -3,12 +3,14 @@ package rocket.app.view;
 import com.sun.xml.ws.org.objectweb.asm.Label;
 
 import eNums.eAction;
+import exceptions.RateException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import rocket.app.MainApp;
+import rocketBase.RateBLL;
 import rocketCode.Action;
 import rocketData.LoanRequest;
 
@@ -36,7 +38,7 @@ public class MortgageController {
 	@FXML
 	private TextField txtHouseCost;
 	@FXML
-	private ComboBox lt;
+	private ComboBox loanTerm;
 	@FXML
 	private Button btn;
 	@FXML
@@ -68,7 +70,17 @@ public class MortgageController {
 		//	TODO - RocketClient.RocketMainController
 		//			set the loan request details...  rate, term, amount, credit score, downpayment
 		//			I've created you an instance of lq...  execute the setters in lq
-
+		lq.setIncome(Double.parseDouble(txtIncome.getText()));
+		lq.setExpenses(Double.parseDouble(txtExpenses.getText()));
+		lq.setiCreditScore(Integer.parseInt(txtCreditScore.getText()));
+		try
+		{
+			lq.setdRate(RateBLL.getRate(Integer.parseInt(txtCreditScore.getText())));
+		}
+		catch(RateException e)
+		{
+			e.printStackTrace();
+		}
 		a.setLoanRequest(lq);
 		
 		//	send lq as a message to RocketHub		
