@@ -1,13 +1,12 @@
 package rocket.app.view;
 
-import com.sun.xml.ws.org.objectweb.asm.Label;
-
 import eNums.eAction;
 import exceptions.RateException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import rocket.app.MainApp;
 import rocketBase.RateBLL;
@@ -94,6 +93,13 @@ public class MortgageController {
 		//			after it's returned back from the server, the payment (dPayment)
 		//			should be calculated.
 		//			Display dPayment on the form, rounded to two decimal places
-		
+		if(lRequest.getdPayment()<lRequest.getIncome()*0.28 && lRequest.getdPayment()<(lRequest.getIncome()-lRequest.getExpenses())*0.36)
+		{
+			err.setText(Double.toString(lRequest.getdPayment()));
+		}
+		else
+		{
+			err.setText("House cost to high.");
+		}
 	}
 }
