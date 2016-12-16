@@ -78,14 +78,6 @@ public class MortgageController {
 		lq.setExpenses(Double.parseDouble(txtExpenses.getText()));
 		lq.setiCreditScore(Integer.parseInt(txtCreditScore.getText()));
 		lq.setiDownPayment(Integer.parseInt(txtDownPayment.getText()));
-		try
-		{
-			lq.setdRate(RateBLL.getRate(Integer.parseInt(txtCreditScore.getText())));
-		}
-		catch(RateException e)
-		{
-			e.printStackTrace();
-		}
 		lq.setiTerm((int)loanTerm.getSelectionModel().getSelectedItem());
 		lq.setdAmount(Double.parseDouble(txtHouseCost.getText()));
 		a.setLoanRequest(lq);
